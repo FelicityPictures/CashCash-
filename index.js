@@ -12,8 +12,8 @@ var f = [['Alabama', '2,729,692,855', '2,778,533,812', '2,907,354,515', '128,820
 var width=800
 var height=500
 
-var x = d3.scale.linear().domain([0, f[0].length]).range([0, w]);
-var y = d3.scale.linear().domain([0, 1000000000]).range([0, h]);
+var x = d3.scale.linear().domain([0, f[0].length]).range([0, width]);
+var y = d3.scale.linear().domain([0, 1000000000]).range([0, height]);
 
 var line = d3.svg.line()
     .x(function(d, i) {
@@ -24,14 +24,14 @@ var line = d3.svg.line()
     });
 
 var graph = d3.select('#graph').append('svg:svg')
-    .attr('width', w)
-    .attr('height', h)
+    .attr('width', width)
+    .attr('height', height)
     .append('svg:g');
 
-var xax = d3.svg.axis().scale(x).tickSize(-h).tickSubdivide(true);
+var xax = d3.svg.axis().scale(x).tickSize(-height).tickSubdivide(true);
 graph.append('svg:g')
     .attr('class','x axis')
-    .attr('transform', 'translate(0,' + h+')')
+    .attr('transform', 'translate(0,' + height+')')
     .call(xax);
 
 var yax = d3.svg.axis().scale(y).ticks(4).orient('left');
