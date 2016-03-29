@@ -27,6 +27,7 @@
     line-height: 40px;
 }
 
+
 path {
     stroke: black;
     stroke-width: 1;
@@ -52,4 +53,9 @@ path {
 .y.axis line, .y.axis path {
     fill: none;
     stroke: #000;
+
+.mid{
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 5px;
 }

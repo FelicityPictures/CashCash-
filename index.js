@@ -48,3 +48,17 @@ graph.append('svg:g')
 //graph.append('svg:g').call('yax');*/
 
 graph.append('svg:path').attr('d', line(testDat));
+
+//graph.append('svg:path').attr('d', line(f[0]));
+
+function addStateNames(){
+    var s = document.getElementById("stateNames");
+    for(var i=0;i<f.length;i++){
+	var n = document.createElement("li");
+	n.innerHTML=f[i][0];
+	s.appendChild(n);
+    }
+}
+
+addStateNames();
+
