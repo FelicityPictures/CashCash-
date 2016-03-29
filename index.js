@@ -64,14 +64,19 @@ var width=1000 - m[1] - m[3];
 var height=600 - m[0] - m[2];
 
 var testDat = [1,2,3,4,5,6,7,8,9];
-var x = d3.scale.linear().domain([2015,2017]).range([80, width-80]);
+//var x = d3.scale.linear().domain([2015,2017]).range([80, width-80]);
+var x = d3.scale.linear().domain([0,10]).range([80, width-80]);
 var y = d3.scale.linear().domain([0, 10]).range([height-80, 80]);
 
 var line = d3.svg.line()
-    .x(function(d, i) {
-	return x(i);
+    //.x(function(d, i) {
+    .x(function(d) {
+	//return x(i);
+        console.log(x(d));
+        return x(d);
     })
     .y(function(d) {
+        console.log(y(d));
 	return y(d)
     });
 
