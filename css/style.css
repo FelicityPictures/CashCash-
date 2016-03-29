@@ -7,18 +7,22 @@
 }
 
 .statesContainer{
-    min-height: 700px;
-    width: 200px;
-    float: left;
-    display: flex;
-}
-
-.statesNames{
-    margin-top: 0px;
+    margin-top: 55px;
     margin-bottom: 0px;
-    max-height: 400px;
+    min-height: 590px;
+    max-height: 590px;
+    width: 200px;
     overflow: auto;
     list-style: none;
     padding-left: 6px;
     padding-right: 4px;
+    border: 1px solid black;
+    float: left;
+}
+
+.statesContainer li{
+    height: 42px;
+    border-bottom: 1px solid #00FF00;
+    text-align: center;
+    line-height: 40px;
 }
