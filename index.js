@@ -64,14 +64,24 @@ var width=1000 - m[1] - m[3];
 var height=600 - m[0] - m[2];
 
 var testDat = [1,2,3,4,5,6,7,8,9];
-//var x = d3.scale.linear().domain([2015,2017]).range([80, width-80]);
-var x = d3.scale.linear().domain([0,10]).range([80, width-80]);
-var y = d3.scale.linear().domain([0, 10]).range([height-80, 80]);
+var x = d3.scale.linear().domain([2015,2017]).range([80, width-80]);
+//var x = d3.scale.linear().domain([0,10]).range([80, width-80]);
+var y = d3.scale.linear().domain([0, 1000000]).range([height-80, 80]);
 
 var line = d3.svg.line()
-    //.x(function(d, i) {
-    .x(function(d) {
-	//return x(i);
+    .x(function(d) { //d shall be the number it is on the list
+        console.log(d);
+	console.log("the following is the year");
+        console.log(x(d.year));
+        return x(d.year);
+    })
+    .y(function(d) {
+        console.log(y(d.value));
+	return y(d.value)
+    });
+/*
+var line = d3.svg.line()
+    .x(function(d) { //d shall be the number it is on the list
         console.log(x(d));
         return x(d);
     })
@@ -79,6 +89,7 @@ var line = d3.svg.line()
         console.log(y(d));
 	return y(d)
     });
+*/
 
 var graph = d3.select('#graph').append('svg:svg')
     .attr('width', width + m[1] + m[3])
@@ -98,12 +109,50 @@ graph.append('svg:g')
 /*var yax = d3.svg.axis().scale(y);*/
 graph.append('svg:g')
     //.attr('class', 'y axis')
-    .attr('transform', 'translate(80,80)') ////////Hardcoded here
+    .attr('transform', 'translate(' + m[1] + ',' + m[3]+')') 
     .call(yax);
 //graph.append('svg:g').call('yax');*/
 
-graph.append('svg:path').attr('d', line(testDat));
 
+var States = [];
+for(var i=0;i<f.length;i++){
+    var StateData = [{
+	"value": f[i][1],
+    	"year": "2015"
+    }, {
+    	"value": f[i][2],
+    	"year": "2016"
+    }, {
+    	"value": f[i][3],
+    	"year": "2017"
+    }];
+	/*
+    StateData = [];
+    //StateData = {};
+    StateData.push({
+	"year":2015,
+	"value":f[i][1]
+    });
+    StateData.push({
+	"year":2016,
+	"value":f[i][2]
+    });
+    StateData.push({
+	"year":2017,
+	"value":f[i][3]
+    });
+	*/
+    States.push(StateData);
+}
+console.log(States.length);
+// States is an ARRAY of DICTIONARIES
+
+for (var i = 0; i < States.length; i++){
+  for (var i2 = 0; i2<3; i++){
+    graph.append('svg:path').attr('d', line(States[i]));
+  }
+}
+//  graph.append('svg:path').attr('d', line(testDat));
 //graph.append('svg:path').attr('d', line(f[0]));
 
 function addStateNames(){
