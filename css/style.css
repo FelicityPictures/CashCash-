@@ -5,3 +5,20 @@
     margin-right: -50%;
     transform: translate(-50%, 0%);
 }
+
+.statesContainer{
+    min-height: 700px;
+    width: 200px;
+    float: left;
+    display: flex;
+}
+
+.statesNames{
+    margin-top: 0px;
+    margin-bottom: 0px;
+    max-height: 400px;
+    overflow: auto;
+    list-style: none;
+    padding-left: 6px;
+    padding-right: 4px;
+}
