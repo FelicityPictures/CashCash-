@@ -26,3 +26,9 @@
     text-align: center;
     line-height: 40px;
 }
+
+.mid{
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
