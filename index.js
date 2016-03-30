@@ -68,17 +68,6 @@ var testDat = [1,2,3,4,5,6,7,8,9];
 var line = d3.svg.line()
     .x(function(d) { //d shall be the number it is on the list
         //console.log(d);
-<<<<<<< HEAD
-	      //console.log("the following is the year");
-        //console.log(x(d.year));
-        return x(d.year);
-    })
-    .y(function(d) {
-        //console.log(y( parseFloat( d.value.replace(',','' ) )) );
-	      console.log('pre: '+ parseFloat( d.value.replace(',','' ) ) );
-        console.log('post: '+y( parseFloat( d.value.replace(',','' ) )) );
-	      return y( parseFloat( d.value.replace(',' , '') ) );
-=======
 	//console.log("the following is the year");
         console.log(d.year);
         return x(d.year);
@@ -88,7 +77,6 @@ var line = d3.svg.line()
 	console.log('post: '+ d.value.replace(/[^\d\.\-\ ]/g, ''));
 	return y( d.value.replace(/[^\d\.\-\ ]/g, ''));
 	//return y( parseFloat( d.value.replace(',' , '') ) );
->>>>>>> 8e380cf02113bfcef2079b028e6cbd78ed126ebc
     });
 
 var x = d3.scale.linear().domain([2015,2017]).range([80, width-80]);
@@ -116,16 +104,10 @@ graph.append('svg:g')
 
 /*var yax = d3.svg.axis().scale(y);*/
 graph.append('svg:g')
-<<<<<<< HEAD
-//.attr('class', 'y axis')
-    .attr('transform', 'translate(' + m[1] + ',' + m[3]+')') 
-=======
     //.attr('class', 'y axis')
     .attr('transform', 'translate(' + m[1] + ',' + 0+')') 
->>>>>>> 8e380cf02113bfcef2079b028e6cbd78ed126ebc
     .call(yax);
 //graph.append('svg:g').call('yax');*/
-
 
 var States = [];
 for(var i=0;i<f.length;i++){
