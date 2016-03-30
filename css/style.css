@@ -11,7 +11,7 @@
     margin-bottom: 0px;
     min-height: 590px;
     max-height: 590px;
-    width: 200px;
+    width: 150px;
     overflow: auto;
     list-style: none;
     padding-left: 6px;
@@ -22,7 +22,7 @@
 
 .statesContainer li{
     height: 42px;
-    border-bottom: 1px solid #00FF00;
+    border-bottom: 1px solid white;
     text-align: center;
     line-height: 40px;
 }
@@ -57,9 +57,15 @@ path {
 .y.axis line, .y.axis path {
     fill: none;
     stroke: #000;
+}
 
 .mid{
     text-align: center;
     margin-top: 10px;
     margin-bottom: 5px;
+}
+
+.subtitle{
+    float: right;
+    margin-top: 80px;
 }
