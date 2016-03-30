@@ -69,12 +69,12 @@ var line = d3.svg.line()
     .x(function(d) { //d shall be the number it is on the list
         //console.log(d);
 	//console.log("the following is the year");
-        console.log(d.year);
+     //   console.log(d.year);
         return x(d.year);
     })
     .y(function(d) {
-        console.log('pre: ' + d.value.replace(/[^\d\.\-\ ]/g, ''));
-	console.log('post: '+ d.value.replace(/[^\d\.\-\ ]/g, ''));
+//        console.log('pre: ' + d.value.replace(/[^\d\.\-\ ]/g, ''));
+//	console.log('post: '+ d.value.replace(/[^\d\.\-\ ]/g, ''));
 	return y( d.value.replace(/[^\d\.\-\ ]/g, ''));
 	//return y( parseFloat( d.value.replace(',' , '') ) );
     });
@@ -123,7 +123,7 @@ for(var i=0;i<f.length;i++){
     }];
     States.push(StateData);
 }
-console.log(States.length);
+//console.log(States.length);
 // States is an ARRAY of DICTIONARIES
 
 function graphState(i) {
@@ -144,6 +144,7 @@ function graphState(i) {
 //  graph.append('svg:path').attr('d', line(testDat));
 //graph.append('svg:path').attr('d', line(f[0]));
 graphState(0);
+
 var currentState="Alabama";
 function addStateNames(){
     var s = document.getElementById("stateNames");
@@ -151,11 +152,11 @@ function addStateNames(){
 	      var n = document.createElement("li");
         var txt=f[i][0];
 	      n.innerHTML=txt;
-        console.log(txt);
 	      s.appendChild(n);
-        n.addEventListener('click',function(d){
-            currentState=txt;
-            console.log(currentState);
+        n.setAttribute("id",txt);
+        var t = document.getElementById(txt);
+        t.addEventListener('click',function(d){
+            console.log(t.innerHTML);
         });
     }
 }
@@ -169,3 +170,9 @@ window.addEventListener('scroll', function(e) {
 	      graphState(stateIndex);
     }
 });
+
+function updateSub(){
+    var s =  document.getElementById("sub");
+    s.innerHTML=currentState;
+}
+updateSub();
