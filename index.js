@@ -85,7 +85,7 @@ var x = d3.scale.linear().domain([2015,2017]).range([80, width-80]);
 var formatxAxis = d3.format('.0f');
 
 var y = d3.scale.linear().domain([20000000, 17000000000]).range([height, 80]);
-
+//var y = d3.scale.linear().domain([2, 1700]).range([height, 80]);
 
 var graph = d3.select('#graph').append('svg:svg')
     .attr('width', width + m[1] + m[3])
@@ -109,6 +109,21 @@ graph.append('svg:g')
     .call(yax);
 //graph.append('svg:g').call('yax');*/
 
+graph.append('text')
+    .attr('text-anchor','middle')
+    .attr('x', width/2)
+    .attr('y', height+50)
+    .text('Year')
+    .style('font-weight','bold');
+
+graph.append('text')
+    .attr('text-anchor', 'middle')
+    .attr('transform','rotate(-90)')
+    .attr('y', -60)
+    .attr('x', -275)
+    .text('Grand Total of Grants')
+    .style('font-weight','bold');
+
 var States = [];
 for(var i=0;i<f.length;i++){
     var StateData = [{
@@ -123,7 +138,7 @@ for(var i=0;i<f.length;i++){
     }];
     States.push(StateData);
 }
-//console.log(States.length);
+
 // States is an ARRAY of DICTIONARIES
 
 function graphState(i) {
@@ -132,46 +147,6 @@ function graphState(i) {
     console.log('AYY');
     console.log('State: '+f[i][0]);
 }
-
-//////////HERE IS THE GRAPH ALL
-/*for (var i = 0; i < States.length; i++){
-  for (var i2 = 0; i2<3; i++){
-  graph.append('svg:path').attr('d', line(States[i]));
-  }
-  }*/
-/*for (var i = 0; i < States.length; i++){
-  graph.append('svg:path').attr('d', line(States[i]));
-  }*/
-
-//  graph.append('svg:path').attr('d', line(testDat));
-//graph.append('svg:path').attr('d', line(f[0]));
-
-//graphState(0);
-/*var currentState="Alabama";
-  graphState(0);
-
-  var currentState="Alabama";
-  function addStateNames(){
-  var s = document.getElementById("stateNames");
-  for(var i=0;i<f.length;i++){
-	var n = document.createElement("li");
-  var txt=f[i][0];
-	n.innerHTML=txt;
-	s.appendChild(n);
-  n.addEventListener('click',function(d){
-	
-  currentState=txt;
-  console.log(currentState);
-  n.setAttribute("id",txt);
-  var t = document.getElementById(txt);
-  t.addEventListener('click',function(d){
-  console.log(t.innerHTML);
-  });
-  }
-  }*/
-
-
-//THIS IS THE THING THAT MAKES THE LIST OF STATES
 
 var currentState;
 var statez=d3.select('#stateNames').selectAll('div').data(f)
@@ -182,13 +157,13 @@ var statez=d3.select('#stateNames').selectAll('div').data(f)
     .on('click', function(d, i) {
 	      graphState(i);
         currentState=f[i][0];
-        document.getElementById("sub").innerHTML=currentState;
+	d3.select('#sub')
+	    .text(currentState);
     });
 
-//addStateNames();
 
+/*var stateIndex = 0;
 
-var stateIndex = 0;
 window.addEventListener('scroll', function(e) {
     if (stateIndex<58) {
 	      stateIndex++;
@@ -198,11 +173,4 @@ window.addEventListener('scroll', function(e) {
         stateIndex = 0;
     }
 });
-
-
-/*function updateSub(){
-  var s =  document.getElementById("sub");
-  s.innerHTML=currentState;
-  }
-  updateSub();
 */
