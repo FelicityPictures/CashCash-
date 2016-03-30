@@ -84,7 +84,7 @@ var x = d3.scale.linear().domain([2015,2017]).range([80, width-80]);
 
 
 
-var y = d3.scale.linear().domain([20000000, 15000000000]).range([height-80, 80]);
+var y = d3.scale.linear().domain([20000000, 17000000000]).range([height, 80]);
 
 
 var graph = d3.select('#graph').append('svg:svg')
@@ -105,7 +105,7 @@ graph.append('svg:g')
 /*var yax = d3.svg.axis().scale(y);*/
 graph.append('svg:g')
     //.attr('class', 'y axis')
-    .attr('transform', 'translate(' + m[1] + ',' + m[3]+')') 
+    .attr('transform', 'translate(' + m[1] + ',' + 0+')') 
     .call(yax);
 //graph.append('svg:g').call('yax');*/
 
