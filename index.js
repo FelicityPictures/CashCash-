@@ -67,9 +67,9 @@ var testDat = [1,2,3,4,5,6,7,8,9];
 
 var line = d3.svg.line()
     .x(function(d) { //d shall be the number it is on the list
-        console.log(d);
-	console.log("the following is the year");
-        console.log(x(d.year));
+        //console.log(d);
+	//console.log("the following is the year");
+        //console.log(x(d.year));
         return x(d.year);
     })
     .y(function(d) {
@@ -90,7 +90,7 @@ var line = d3.svg.line()
 
 var x = d3.scale.linear().domain([2015,2017]).range([80, width-80]);
 //var x = d3.scale.linear().domain([0,10]).range([80, width-80]);
-var y = d3.scale.linear().domain([0, 1000000]).range([height-80, 80]);
+var y = d3.scale.linear().domain([200000, 1000000]).range([height-80, 80]);
 
 var graph = d3.select('#graph').append('svg:svg')
     .attr('width', width + m[1] + m[3])
@@ -135,10 +135,9 @@ console.log(States.length);
 
 //////////HERE IS THE GRAPH ALL
 for (var i = 0; i < States.length; i++){
-  for (var i2 = 0; i2<3; i++){
     graph.append('svg:path').attr('d', line(States[i]));
-  }
 }
+
 //  graph.append('svg:path').attr('d', line(testDat));
 //graph.append('svg:path').attr('d', line(f[0]));
 
@@ -152,4 +151,3 @@ function addStateNames(){
 }
 
 addStateNames();
-
