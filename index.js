@@ -185,9 +185,12 @@ var statez=d3.select('#stateNames').selectAll('div').data(f)
 
 var stateIndex = 0;
 window.addEventListener('scroll', function(e) {
-    if (stateIndex<=50) {
+    if (stateIndex<58) {
 	      stateIndex++;
 	      graphState(stateIndex);
+    }
+    else {
+        stateIndex = 0;
     }
 });
 
