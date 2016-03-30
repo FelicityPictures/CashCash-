@@ -127,7 +127,9 @@ console.log(States.length);
 // States is an ARRAY of DICTIONARIES
 
 function graphState(i) {
-    graph.append('svg:path').attr('d', line(States[i]));
+    d3.select('#state').remove();
+    graph.append('svg:path').attr('d', line(States[i])).attr('id', 'state');
+    console.log('AYY');
     console.log('State: '+f[i][0]);
 }
 
@@ -143,8 +145,8 @@ function graphState(i) {
 
 //  graph.append('svg:path').attr('d', line(testDat));
 //graph.append('svg:path').attr('d', line(f[0]));
-graphState(0);
-var currentState="Alabama";
+//graphState(0);
+/*var currentState="Alabama";
 function addStateNames(){
     var s = document.getElementById("stateNames");
     for(var i=0;i<f.length;i++){
@@ -154,13 +156,23 @@ function addStateNames(){
         console.log(txt);
 	      s.appendChild(n);
         n.addEventListener('click',function(d){
+	    
             currentState=txt;
             console.log(currentState);
         });
     }
-}
+}*/
 
-addStateNames();
+var statez=d3.select('#stateNames').selectAll('div').data(f)
+    .enter().append('div')
+    .text(function(d, i) {
+	return f[i][0];
+    })
+    .on('click', function(d, i) {
+	graphState(i);
+    });
+	
+//addStateNames();
 
 var stateIndex = 0;
 window.addEventListener('scroll', function(e) {
@@ -169,3 +181,5 @@ window.addEventListener('scroll', function(e) {
 	      graphState(stateIndex);
     }
 });
+
+
