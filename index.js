@@ -69,11 +69,12 @@ var line = d3.svg.line()
     .x(function(d) { //d shall be the number it is on the list
         //console.log(d);
 	//console.log("the following is the year");
-        //console.log(x(d.year));
+        console.log(d.year);
         return x(d.year);
     })
     .y(function(d) {
-        //console.log(y( parseFloat( d.value.replace(',','' ) )) );
+	console.log( parseFloat( d.value.replace(',','' ) ) );
+        console.log(y( parseFloat( d.value.replace(',','' ) )) );
 	return y( parseFloat( d.value.replace(',' , '') ) );
     });
 /*
