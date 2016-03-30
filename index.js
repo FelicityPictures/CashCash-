@@ -73,10 +73,10 @@ var line = d3.svg.line()
         return x(d.year);
     })
     .y(function(d) {
-        //console.log(y( parseFloat( d.value.replace(',','' ) )) );
-	console.log('pre: '+ parseFloat( d.value.replace(',','' ) ) );
-        console.log('post: '+y( parseFloat( d.value.replace(',','' ) )) );
-	return y( parseFloat( d.value.replace(',' , '') ) );
+        console.log('pre: ' + d.value.replace(/[^\d\.\-\ ]/g, ''));
+	console.log('post: '+ d.value.replace(/[^\d\.\-\ ]/g, ''));
+	return y( d.value.replace(/[^\d\.\-\ ]/g, ''));
+	//return y( parseFloat( d.value.replace(',' , '') ) );
     });
 
 var x = d3.scale.linear().domain([2015,2017]).range([80, width-80]);
@@ -84,7 +84,7 @@ var x = d3.scale.linear().domain([2015,2017]).range([80, width-80]);
 
 
 
-var y = d3.scale.linear().domain([200000, 1000000]).range([height-80, 80]);
+var y = d3.scale.linear().domain([20000000, 15000000000]).range([height-80, 80]);
 
 
 var graph = d3.select('#graph').append('svg:svg')
@@ -156,10 +156,13 @@ function addStateNames(){
 
 addStateNames();
 
+var stateIndex = 0;
 window.addEventListener('scroll', function(e) {
     if (stateIndex<=50) {
 	stateIndex++;
 	graphState(stateIndex);
     }
 });
+    
+
     
