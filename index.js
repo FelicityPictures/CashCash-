@@ -74,7 +74,7 @@ var line = d3.svg.line()
     })
     .y(function(d) {
 //        console.log('pre: ' + d.value.replace(/[^\d\.\-\ ]/g, ''));
-//	console.log('post: '+ d.value.replace(/[^\d\.\-\ ]/g, ''));
+	console.log('post: '+ d.value.replace(/[^\d\.\-\ ]/g, ''));
 	return y( d.value.replace(/[^\d\.\-\ ]/g, ''));
 	//return y( parseFloat( d.value.replace(',' , '') ) );
     });
