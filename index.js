@@ -68,23 +68,21 @@ var testDat = [1,2,3,4,5,6,7,8,9];
 var line = d3.svg.line()
     .x(function(d) { //d shall be the number it is on the list
         //console.log(d);
-	//console.log("the following is the year");
-     //   console.log(d.year);
+	      //console.log("the following is the year");
+        //   console.log(d.year);
         return x(d.year);
     })
     .y(function(d) {
-//        console.log('pre: ' + d.value.replace(/[^\d\.\-\ ]/g, ''));
-	console.log('post: '+ d.value.replace(/[^\d\.\-\ ]/g, ''));
-	return y( d.value.replace(/[^\d\.\-\ ]/g, ''));
-	//return y( parseFloat( d.value.replace(',' , '') ) );
+        //        console.log('pre: ' + d.value.replace(/[^\d\.\-\ ]/g, ''));
+	      console.log('post: '+ d.value.replace(/[^\d\.\-\ ]/g, ''));
+	      return y( d.value.replace(/[^\d\.\-\ ]/g, ''));
+	      //return y( parseFloat( d.value.replace(',' , '') ) );
     });
 
 var x = d3.scale.linear().domain([2015,2017]).range([80, width-80]);
 //var x = d3.scale.linear().domain([0,10]).range([80, width-80]);
 
 var formatxAxis = d3.format('.0f');
-
-
 
 var y = d3.scale.linear().domain([20000000, 17000000000]).range([height, 80]);
 
@@ -106,7 +104,7 @@ graph.append('svg:g')
 
 /*var yax = d3.svg.axis().scale(y);*/
 graph.append('svg:g')
-    //.attr('class', 'y axis')
+//.attr('class', 'y axis')
     .attr('transform', 'translate(' + m[1] + ',' + 0+')') 
     .call(yax);
 //graph.append('svg:g').call('yax');*/
@@ -150,40 +148,45 @@ function graphState(i) {
 
 //graphState(0);
 /*var currentState="Alabama";
-graphState(0);
+  graphState(0);
 
-var currentState="Alabama";
-function addStateNames(){
-    var s = document.getElementById("stateNames");
-    for(var i=0;i<f.length;i++){
-	      var n = document.createElement("li");
-        var txt=f[i][0];
-	      n.innerHTML=txt;
-	      s.appendChild(n);
-        n.addEventListener('click',function(d){
-	    
-            currentState=txt;
-            console.log(currentState);
-        n.setAttribute("id",txt);
-        var t = document.getElementById(txt);
-        t.addEventListener('click',function(d){
-            console.log(t.innerHTML);
-        });
-    }
-}*/
+  var currentState="Alabama";
+  function addStateNames(){
+  var s = document.getElementById("stateNames");
+  for(var i=0;i<f.length;i++){
+	var n = document.createElement("li");
+  var txt=f[i][0];
+	n.innerHTML=txt;
+	s.appendChild(n);
+  n.addEventListener('click',function(d){
+	
+  currentState=txt;
+  console.log(currentState);
+  n.setAttribute("id",txt);
+  var t = document.getElementById(txt);
+  t.addEventListener('click',function(d){
+  console.log(t.innerHTML);
+  });
+  }
+  }*/
 
 
 //THIS IS THE THING THAT MAKES THE LIST OF STATES
+
+var currentState;
 var statez=d3.select('#stateNames').selectAll('div').data(f)
-    .enter().append('div')
+    .enter().append('li')
     .text(function(d, i) {
-	return f[i][0];
+	      return f[i][0];
     })
     .on('click', function(d, i) {
-	graphState(i);
+	      graphState(i);
+        currentState=f[i][0];
+        document.getElementById("sub").innerHTML=currentState;
     });
-	
+
 //addStateNames();
+
 
 var stateIndex = 0;
 window.addEventListener('scroll', function(e) {
@@ -198,8 +201,8 @@ window.addEventListener('scroll', function(e) {
 
 
 /*function updateSub(){
-    var s =  document.getElementById("sub");
-    s.innerHTML=currentState;
-}
-updateSub();
+  var s =  document.getElementById("sub");
+  s.innerHTML=currentState;
+  }
+  updateSub();
 */

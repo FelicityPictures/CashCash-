@@ -1,17 +1,19 @@
 .centered{
-    margin-top: 10px;
+    margin-top: 15px;
     position: absolute;
     left: 50%;
     margin-right: -50%;
     transform: translate(-50%, 0%);
+    font: 40px arial, sans-serif;
+    font-weight: bold;
 }
 
 .statesContainer{
-    margin-top: 55px;
+    margin-top: 75px;
     margin-bottom: 0px;
-    min-height: 590px;
-    max-height: 590px;
-    width: 150px;
+    min-height: 550px;
+    max-height: 550px;
+    width: 200px;
     overflow: auto;
     list-style: none;
     padding-left: 6px;
@@ -21,10 +23,12 @@
 }
 
 .statesContainer li{
-    height: 42px;
+    font: 16px arial, sans-serif;
+    height: 30px;
     border-bottom: 1px solid white;
     text-align: center;
     line-height: 40px;
+    padding-bottom: 10px;
 }
 
 .statesContainer li:hover{
@@ -61,11 +65,15 @@ path {
 
 .mid{
     text-align: center;
+    font: 30px arial, sans-serif;
+    font-weight: bold;
     margin-top: 10px;
     margin-bottom: 5px;
 }
 
 .subtitle{
-    float: right;
     margin-top: 80px;
+    margin-right: 50px;
+    margin-bottom: 0px;
+    float: right;
 }
