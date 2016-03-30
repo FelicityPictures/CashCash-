@@ -82,6 +82,8 @@ var line = d3.svg.line()
 var x = d3.scale.linear().domain([2015,2017]).range([80, width-80]);
 //var x = d3.scale.linear().domain([0,10]).range([80, width-80]);
 
+var formatxAxis = d3.format('.0f');
+
 
 
 var y = d3.scale.linear().domain([20000000, 17000000000]).range([height, 80]);
@@ -93,7 +95,7 @@ var graph = d3.select('#graph').append('svg:svg')
     .append('svg:g')
     .attr('transform','translate(' + m[3] + ',' + m[0] + ')');
 
-var xax = d3.svg.axis().scale(x);
+var xax = d3.svg.axis().scale(x).tickFormat(formatxAxis).ticks(2);
 var yax = d3.svg.axis().scale(y).orient("left");
 
 graph.append('svg:g')
