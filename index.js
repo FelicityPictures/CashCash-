@@ -152,11 +152,12 @@ function addStateNames(){
 	      var n = document.createElement("li");
         var txt=f[i][0];
 	      n.innerHTML=txt;
+        console.log(txt);
+	      s.appendChild(n);
         n.addEventListener('click',function(d){
             currentState=txt;
-            console.log(d);
+            console.log(currentState);
         });
-	      s.appendChild(n);
     }
 }
 
